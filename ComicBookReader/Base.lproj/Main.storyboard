@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--List-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="TableViewController" customModule="ComicBookReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RWm-1c-QdG">
+                                <rect key="frame" x="0.0" y="70" width="375" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="100" id="lRc-25-YPv" customClass="CustomTableViewCell" customModule="ComicBookReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lRc-25-YPv" id="ypP-vP-9xJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mL1-ub-DNK">
+                                                    <rect key="frame" x="0.0" y="10" width="80" height="80"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tapping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-Cz-BLF">
+                                                    <rect key="frame" x="90" y="10" width="200" height="25"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                                    <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sometimes the best fun looks like boredom." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="p68-5C-mpA">
+                                                    <rect key="frame" x="90" y="40" width="275" height="50"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                    <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p68-5C-mpA" firstAttribute="leading" secondItem="mL1-ub-DNK" secondAttribute="trailing" constant="10" id="0Gg-vz-n6R"/>
+                                                <constraint firstItem="p68-5C-mpA" firstAttribute="top" secondItem="vo6-Cz-BLF" secondAttribute="bottom" constant="5" id="5K3-U2-MbV"/>
+                                                <constraint firstItem="vo6-Cz-BLF" firstAttribute="leading" secondItem="mL1-ub-DNK" secondAttribute="trailing" constant="10" id="GSU-bP-7ii"/>
+                                                <constraint firstItem="mL1-ub-DNK" firstAttribute="top" secondItem="ypP-vP-9xJ" secondAttribute="top" constant="10" id="ShM-XD-0sx"/>
+                                                <constraint firstItem="mL1-ub-DNK" firstAttribute="leading" secondItem="ypP-vP-9xJ" secondAttribute="leading" id="hrv-dq-Xnq"/>
+                                                <constraint firstItem="vo6-Cz-BLF" firstAttribute="top" secondItem="ypP-vP-9xJ" secondAttribute="top" constant="10" id="uyi-aY-Wpu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="p68-5C-mpA" firstAttribute="width" secondItem="lRc-25-YPv" secondAttribute="width" multiplier="275:375" id="Z87-t0-2vb"/>
+                                            <constraint firstItem="p68-5C-mpA" firstAttribute="height" secondItem="lRc-25-YPv" secondAttribute="height" multiplier="50:100" id="aAk-6Y-a2P"/>
+                                            <constraint firstItem="vo6-Cz-BLF" firstAttribute="width" secondItem="lRc-25-YPv" secondAttribute="width" multiplier="200:375" id="ep2-Sw-QJU"/>
+                                            <constraint firstItem="mL1-ub-DNK" firstAttribute="height" secondItem="lRc-25-YPv" secondAttribute="height" multiplier="80:100" id="pUV-i0-lsa"/>
+                                            <constraint firstItem="vo6-Cz-BLF" firstAttribute="height" secondItem="lRc-25-YPv" secondAttribute="height" multiplier="25:100" id="uEv-hi-1Yg"/>
+                                            <constraint firstItem="mL1-ub-DNK" firstAttribute="width" secondItem="lRc-25-YPv" secondAttribute="width" multiplier="80:375" id="xOS-Qb-SU3"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="comicAlternateText" destination="p68-5C-mpA" id="jss-On-Ho0"/>
+                                            <outlet property="comicImageView" destination="mL1-ub-DNK" id="FAj-GM-ghZ"/>
+                                            <outlet property="comicTitle" destination="vo6-Cz-BLF" id="txt-qU-2bT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJq-Qe-aIu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XKCD Comic Reader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="d1J-Qw-jqX">
+                                        <rect key="frame" x="106" y="15.5" width="164" height="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                        <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="d1J-Qw-jqX" firstAttribute="centerX" secondItem="NJq-Qe-aIu" secondAttribute="centerX" id="SJ3-By-rP5"/>
+                                    <constraint firstItem="d1J-Qw-jqX" firstAttribute="width" secondItem="NJq-Qe-aIu" secondAttribute="width" multiplier="164:375" id="Z9D-Zu-qxx"/>
+                                    <constraint firstItem="d1J-Qw-jqX" firstAttribute="height" secondItem="NJq-Qe-aIu" secondAttribute="height" multiplier="20:50" id="wYI-Cc-xdn"/>
+                                    <constraint firstItem="d1J-Qw-jqX" firstAttribute="centerY" secondItem="NJq-Qe-aIu" secondAttribute="centerY" id="xXx-tY-3T0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NJq-Qe-aIu" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="CHp-ei-Rau"/>
+                            <constraint firstItem="RWm-1c-QdG" firstAttribute="top" secondItem="NJq-Qe-aIu" secondAttribute="bottom" id="Elg-uj-YCz"/>
+                            <constraint firstItem="RWm-1c-QdG" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="JVQ-wg-iM6"/>
+                            <constraint firstItem="RWm-1c-QdG" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="548:667" id="QZH-1J-XQa"/>
+                            <constraint firstItem="NJq-Qe-aIu" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="50:667" id="RFg-rC-neP"/>
+                            <constraint firstItem="NJq-Qe-aIu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="aWT-gI-miG"/>
+                            <constraint firstItem="RWm-1c-QdG" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="wFe-uM-4lP"/>
+                            <constraint firstItem="NJq-Qe-aIu" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="yji-po-1Xe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="List" image="menu" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="comicTableView" destination="RWm-1c-QdG" id="F3N-AO-bA9"/>
+                        <outlet property="headerView" destination="NJq-Qe-aIu" id="YXz-0I-7Td"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+        </scene>
+        <!--Grid-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController id="8rJ-Kc-sve" customClass="CollectionViewController" customModule="ComicBookReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Zf-JB-HLV">
+                                <rect key="frame" x="0.0" y="70" width="375" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="0.0" id="fD9-Sp-uuP">
+                                    <size key="itemSize" width="175" height="220"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="Xid-Ea-p2b" customClass="CustomCollectionViewCell" customModule="ComicBookReader" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="2" width="175" height="220"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="220"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-Yg-V75">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tapping" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="193-D4-nMP">
+                                                    <rect key="frame" x="0.0" y="185" width="175" height="25"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
+                                                    <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Aha-Yg-V75" firstAttribute="leading" secondItem="Xid-Ea-p2b" secondAttribute="leading" id="BWl-0A-EXd"/>
+                                            <constraint firstItem="Aha-Yg-V75" firstAttribute="width" secondItem="Xid-Ea-p2b" secondAttribute="width" id="SVm-IF-3bR"/>
+                                            <constraint firstItem="193-D4-nMP" firstAttribute="top" secondItem="Aha-Yg-V75" secondAttribute="bottom" constant="10" id="Tog-dX-qlB"/>
+                                            <constraint firstItem="193-D4-nMP" firstAttribute="width" secondItem="Xid-Ea-p2b" secondAttribute="width" id="VSL-vq-cPZ"/>
+                                            <constraint firstItem="Aha-Yg-V75" firstAttribute="top" secondItem="Xid-Ea-p2b" secondAttribute="top" id="acG-Qr-JHP"/>
+                                            <constraint firstItem="Aha-Yg-V75" firstAttribute="height" secondItem="Xid-Ea-p2b" secondAttribute="height" multiplier="175:220" id="eHO-Jm-rB1"/>
+                                            <constraint firstItem="193-D4-nMP" firstAttribute="height" secondItem="Xid-Ea-p2b" secondAttribute="height" multiplier="25:220" id="k7h-JE-cnE"/>
+                                            <constraint firstItem="193-D4-nMP" firstAttribute="leading" secondItem="Xid-Ea-p2b" secondAttribute="leading" id="t2M-9Q-hnI"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="comicImageView" destination="Aha-Yg-V75" id="WLw-bY-qLH"/>
+                                            <outlet property="comicTitle" destination="193-D4-nMP" id="2qx-cR-Uzm"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69U-o9-zLW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XKCD Comic Reader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bjt-Ed-v5L">
+                                        <rect key="frame" x="105.5" y="14.5" width="164" height="20"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                        <color key="textColor" red="0.37254901960784315" green="0.36470588235294116" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Bjt-Ed-v5L" firstAttribute="width" secondItem="69U-o9-zLW" secondAttribute="width" multiplier="164:375" id="4B6-ZT-wu2"/>
+                                    <constraint firstItem="Bjt-Ed-v5L" firstAttribute="height" secondItem="69U-o9-zLW" secondAttribute="height" multiplier="20:50" id="ajh-9l-Xcb"/>
+                                    <constraint firstItem="Bjt-Ed-v5L" firstAttribute="centerX" secondItem="69U-o9-zLW" secondAttribute="centerX" id="iJu-9y-cUh"/>
+                                    <constraint firstItem="Bjt-Ed-v5L" firstAttribute="centerY" secondItem="69U-o9-zLW" secondAttribute="centerY" id="nEh-9o-bYg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Zf-JB-HLV" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" multiplier="548:667" id="B5Y-Ul-F2n"/>
+                            <constraint firstItem="5Zf-JB-HLV" firstAttribute="top" secondItem="69U-o9-zLW" secondAttribute="bottom" id="CUo-7Q-Q4h"/>
+                            <constraint firstItem="69U-o9-zLW" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="QI4-wN-N65"/>
+                            <constraint firstItem="69U-o9-zLW" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" multiplier="50:667" id="UdY-SQ-mEP"/>
+                            <constraint firstItem="5Zf-JB-HLV" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="Vr6-89-ySc"/>
+                            <constraint firstItem="69U-o9-zLW" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="c0B-fg-htv"/>
+                            <constraint firstItem="69U-o9-zLW" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="smr-wg-HQb"/>
+                            <constraint firstItem="5Zf-JB-HLV" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="tgK-B3-jGP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Grid" image="icons8-grid-view-25" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="comicCollectionView" destination="5Zf-JB-HLV" id="FY1-6f-pFd"/>
+                        <outlet property="headerView" destination="69U-o9-zLW" id="Ril-zC-Laj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-grid-view-25" width="25" height="25"/>
+        <image name="menu" width="16" height="15"/>
+    </resources>
+</document>
