@@ -12,13 +12,21 @@ import AlamofireImage
 
 class TableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
+    @IBOutlet weak var fullScreenView: UIView!
     @IBOutlet weak var comicTableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var comicTitle: UILabel!
+    @IBOutlet weak var comicAlternateText: UILabel!
+    @IBOutlet weak var comicImage: UIImageView!
+    @IBOutlet weak var comicDate: UILabel!
     
     let tableCellReuseIdentifier = "tableViewCell"
+    var statusBarHidden = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fullScreenView.isHidden = true
         comicTableView.delegate = self
         comicTableView.dataSource = self
         comicTableView.rowHeight = 100
@@ -31,14 +39,42 @@ class TableViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                                                selector: #selector(reloadTable),
                                                name: NSNotification.Name(rawValue: Globals.tableLoadNotificationKey),
                                                object: nil)
+        
+        let blurViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(disableFullScreen(blurViewTapGesture:)))
+        blurView.addGestureRecognizer(blurViewTapGesture)
+        
+        let imageViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(hideImage(imageViewTapGesture:)))
+        comicImage.addGestureRecognizer(imageViewTapGesture)
+        
+        let alternateTextTapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage(alternateTextTapGesture:)))
+        comicAlternateText.addGestureRecognizer(alternateTextTapGesture)
         // Do any additional setup after loading the view.
     }
     
-    @objc func reloadTable() { comicTableView.reloadData() }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func disableFullScreen(blurViewTapGesture:UITapGestureRecognizer){
+        fullScreenView.isHidden = true
+        statusBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    @objc func hideImage(imageViewTapGesture:UITapGestureRecognizer){
+        comicImage.isHidden = true
+    }
+    
+    @objc func showImage(alternateTextTapGesture:UITapGestureRecognizer){
+        comicImage.isHidden = false
+    }
+    
+    @objc func reloadTable() { comicTableView.reloadData() }
+    
+    override var prefersStatusBarHidden: Bool {
+        return statusBarHidden
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,8 +84,8 @@ class TableViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == self.comicTableView){
             let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
-            var index = indexPath.row
-            var comic = Globals.listItems[index]
+            let index = indexPath.row
+            let comic = Globals.listItems[index]
             Alamofire.request(comic.img).responseImage{ response in
                 guard let image = response.result.value else {
                     return
@@ -62,6 +98,29 @@ class TableViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         var cell:UITableViewCell? = nil
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == self.comicTableView){
+            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
+            var index = indexPath.row
+            let comic = Globals.listItems[index]
+            comicImage.image = cell.comicImageView.image
+            Alamofire.request(comic.img).responseImage{ response in
+                guard let image = response.result.value else {
+                    return
+                }
+                self.comicImage.image = image
+            }
+            comicTitle.text = comic.title
+            let date = "\(comic.day!)/\(comic.month!)/\(comic.year!)"
+            comicDate.text = date
+            comicAlternateText.text = comic.alt
+            fullScreenView.isHidden = false
+            self.tabBarController?.tabBar.isHidden = true
+            statusBarHidden = true
+            setNeedsStatusBarAppearanceUpdate()
+        }
     }
 
     /*
