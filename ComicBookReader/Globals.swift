@@ -17,4 +17,6 @@ class Globals{
     static var gridItems:[ComicBook]! = []
     static let tableLoadNotificationKey = "notifyTable"
     static let collectionLoadNotificationKey = "notifyCollection"
+    static var isFetchingList:Bool!
+    static var isFetchingGrid:Bool!
 }

@@ -117,6 +117,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vt-9S-NnW">
+                                        <rect key="frame" x="325" y="20" width="40" height="40"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close - white" translatesAutoresizingMaskIntoConstraints="NO" id="nM6-Yz-q1s">
+                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="nM6-Yz-q1s" firstAttribute="leading" secondItem="8Vt-9S-NnW" secondAttribute="leading" constant="10" id="PEo-1H-7VI"/>
+                                            <constraint firstItem="nM6-Yz-q1s" firstAttribute="top" secondItem="8Vt-9S-NnW" secondAttribute="top" constant="10" id="pbg-7E-XDj"/>
+                                            <constraint firstItem="nM6-Yz-q1s" firstAttribute="width" secondItem="8Vt-9S-NnW" secondAttribute="width" multiplier="20:40" id="qkO-Yq-r6n"/>
+                                            <constraint firstItem="nM6-Yz-q1s" firstAttribute="height" secondItem="8Vt-9S-NnW" secondAttribute="height" multiplier="20:40" id="qx9-Up-EWf"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-tK-ff4">
                                         <rect key="frame" x="0.0" y="258" width="375" height="150"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
@@ -136,17 +150,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Qbj-5x-8I6" firstAttribute="height" secondItem="5IE-nK-ZhD" secondAttribute="height" multiplier="25:667" id="0qF-86-92y"/>
+                                    <constraint firstItem="8Vt-9S-NnW" firstAttribute="height" secondItem="5IE-nK-ZhD" secondAttribute="height" multiplier="40:667" id="7Cg-79-saO"/>
                                     <constraint firstItem="Krf-WE-Cqc" firstAttribute="height" secondItem="5IE-nK-ZhD" secondAttribute="height" id="9B3-jD-S91"/>
                                     <constraint firstItem="HLD-UZ-xxA" firstAttribute="width" secondItem="5IE-nK-ZhD" secondAttribute="width" multiplier="250:375" id="E72-cm-mgI"/>
                                     <constraint firstItem="SPs-cd-sgw" firstAttribute="centerY" secondItem="5IE-nK-ZhD" secondAttribute="centerY" id="Ed1-2s-koU"/>
                                     <constraint firstItem="Krf-WE-Cqc" firstAttribute="top" secondItem="5IE-nK-ZhD" secondAttribute="top" id="FWX-4j-kpg"/>
                                     <constraint firstItem="Lzg-tK-ff4" firstAttribute="width" secondItem="5IE-nK-ZhD" secondAttribute="width" id="Fs7-aH-OFk"/>
+                                    <constraint firstItem="8Vt-9S-NnW" firstAttribute="top" secondItem="5IE-nK-ZhD" secondAttribute="top" constant="20" id="G1v-ck-5rc"/>
                                     <constraint firstItem="HLD-UZ-xxA" firstAttribute="top" secondItem="SPs-cd-sgw" secondAttribute="bottom" constant="10" id="RcC-du-rFn"/>
                                     <constraint firstItem="Qbj-5x-8I6" firstAttribute="width" secondItem="5IE-nK-ZhD" secondAttribute="width" multiplier="250:375" id="Usk-1L-V44"/>
                                     <constraint firstItem="SPs-cd-sgw" firstAttribute="height" secondItem="5IE-nK-ZhD" secondAttribute="height" multiplier="375:667" id="a1K-Xv-NVD"/>
                                     <constraint firstItem="HLD-UZ-xxA" firstAttribute="centerX" secondItem="5IE-nK-ZhD" secondAttribute="centerX" id="bar-Jy-a7m"/>
                                     <constraint firstItem="Lzg-tK-ff4" firstAttribute="centerX" secondItem="5IE-nK-ZhD" secondAttribute="centerX" id="ceC-J4-2mh"/>
                                     <constraint firstItem="SPs-cd-sgw" firstAttribute="width" secondItem="5IE-nK-ZhD" secondAttribute="width" id="cuT-3D-X5o"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Vt-9S-NnW" secondAttribute="trailing" constant="10" id="e8b-By-dn3"/>
                                     <constraint firstItem="HLD-UZ-xxA" firstAttribute="height" secondItem="5IE-nK-ZhD" secondAttribute="height" multiplier="25:667" id="gvK-7U-cH4"/>
                                     <constraint firstItem="Krf-WE-Cqc" firstAttribute="width" secondItem="5IE-nK-ZhD" secondAttribute="width" id="iO7-7q-5IM"/>
                                     <constraint firstItem="Lzg-tK-ff4" firstAttribute="centerY" secondItem="5IE-nK-ZhD" secondAttribute="centerY" id="iSX-jp-6x2"/>
@@ -155,6 +172,7 @@
                                     <constraint firstItem="Krf-WE-Cqc" firstAttribute="leading" secondItem="5IE-nK-ZhD" secondAttribute="leading" id="rPx-pq-kVM"/>
                                     <constraint firstItem="Lzg-tK-ff4" firstAttribute="height" secondItem="5IE-nK-ZhD" secondAttribute="height" multiplier="150:667" id="sFW-rI-vd3"/>
                                     <constraint firstItem="Qbj-5x-8I6" firstAttribute="centerX" secondItem="5IE-nK-ZhD" secondAttribute="centerX" id="uHO-7T-9ar"/>
+                                    <constraint firstItem="8Vt-9S-NnW" firstAttribute="width" secondItem="5IE-nK-ZhD" secondAttribute="width" multiplier="40:375" id="yjz-gZ-FsB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -178,6 +196,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="menu" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="blurView" destination="Krf-WE-Cqc" id="PfV-sh-APM"/>
+                        <outlet property="close" destination="8Vt-9S-NnW" id="eFB-Ez-CPJ"/>
                         <outlet property="comicAlternateText" destination="Lzg-tK-ff4" id="v9f-Ur-Fep"/>
                         <outlet property="comicDate" destination="HLD-UZ-xxA" id="pfp-Kg-lQQ"/>
                         <outlet property="comicImage" destination="SPs-cd-sgw" id="5yc-nx-RV2"/>
@@ -279,6 +298,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-Vq-k4H">
+                                        <rect key="frame" x="325" y="20" width="40" height="40"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close - white" translatesAutoresizingMaskIntoConstraints="NO" id="i6H-wE-U8j">
+                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="i6H-wE-U8j" firstAttribute="height" secondItem="l9b-Vq-k4H" secondAttribute="height" multiplier="20:40" id="0b2-Gn-cOI"/>
+                                            <constraint firstItem="i6H-wE-U8j" firstAttribute="top" secondItem="l9b-Vq-k4H" secondAttribute="top" constant="10" id="6xh-fV-jwH"/>
+                                            <constraint firstItem="i6H-wE-U8j" firstAttribute="leading" secondItem="l9b-Vq-k4H" secondAttribute="leading" constant="10" id="YjN-UE-fM1"/>
+                                            <constraint firstItem="i6H-wE-U8j" firstAttribute="width" secondItem="l9b-Vq-k4H" secondAttribute="width" multiplier="20:40" id="rFA-R3-ZF2"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="UJd-T6-DaI">
                                         <rect key="frame" x="0.0" y="258" width="375" height="150.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
@@ -313,9 +346,13 @@
                                     <constraint firstItem="jnY-Na-rlE" firstAttribute="height" secondItem="R6G-uq-uqM" secondAttribute="height" id="eC3-Zk-X7M"/>
                                     <constraint firstItem="e3Q-S4-gTh" firstAttribute="centerY" secondItem="R6G-uq-uqM" secondAttribute="centerY" id="els-3p-sgX"/>
                                     <constraint firstItem="X6b-bJ-ED0" firstAttribute="centerX" secondItem="R6G-uq-uqM" secondAttribute="centerX" id="k6S-BU-xX0"/>
+                                    <constraint firstItem="l9b-Vq-k4H" firstAttribute="width" secondItem="R6G-uq-uqM" secondAttribute="width" multiplier="40:375" id="laM-Pa-EOL"/>
                                     <constraint firstItem="X6b-bJ-ED0" firstAttribute="width" secondItem="R6G-uq-uqM" secondAttribute="width" multiplier="250:375" id="nAA-hD-5O0"/>
                                     <constraint firstItem="vp8-gT-Kx2" firstAttribute="top" secondItem="e3Q-S4-gTh" secondAttribute="bottom" constant="10" id="nNf-Jc-otC"/>
+                                    <constraint firstItem="l9b-Vq-k4H" firstAttribute="top" secondItem="R6G-uq-uqM" secondAttribute="top" constant="20" id="orQ-pp-1yY"/>
+                                    <constraint firstItem="l9b-Vq-k4H" firstAttribute="height" secondItem="R6G-uq-uqM" secondAttribute="height" multiplier="40:667" id="qsh-fY-AVp"/>
                                     <constraint firstItem="e3Q-S4-gTh" firstAttribute="height" secondItem="R6G-uq-uqM" secondAttribute="height" multiplier="375:667" id="rRh-8U-GnP"/>
+                                    <constraint firstAttribute="trailing" secondItem="l9b-Vq-k4H" secondAttribute="trailing" constant="10" id="uhU-cE-8UD"/>
                                     <constraint firstItem="jnY-Na-rlE" firstAttribute="width" secondItem="R6G-uq-uqM" secondAttribute="width" id="up3-f4-Suy"/>
                                 </constraints>
                             </view>
@@ -340,6 +377,7 @@
                     <tabBarItem key="tabBarItem" title="Grid" image="icons8-grid-view-25" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="blurView" destination="jnY-Na-rlE" id="4pU-7C-oU9"/>
+                        <outlet property="close" destination="l9b-Vq-k4H" id="Wuv-Bf-N3Y"/>
                         <outlet property="comicAlternateText" destination="UJd-T6-DaI" id="csh-Uw-fJ6"/>
                         <outlet property="comicCollectionView" destination="5Zf-JB-HLV" id="FY1-6f-pFd"/>
                         <outlet property="comicDate" destination="vp8-gT-Kx2" id="6HZ-M9-chA"/>
@@ -373,6 +411,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close - white" width="12" height="12"/>
         <image name="icons8-grid-view-25" width="25" height="25"/>
         <image name="menu" width="16" height="15"/>
     </resources>

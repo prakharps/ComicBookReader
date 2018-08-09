@@ -32,7 +32,7 @@ class Utils {
                 startNum = Globals.gridStartNumber
                 endNum = Globals.gridEndNumber
             }
-        }else{
+        }else if(direction>0){
             if(isList){
                 Globals.listEndNumber = Globals.listEndNumber + 10
                 Globals.listStartNumber = Globals.listStartNumber + 10
@@ -44,15 +44,20 @@ class Utils {
                 startNum = Globals.gridStartNumber
                 endNum = Globals.gridEndNumber
             }
+        }else{
+            startNum = 1
+            endNum = 10
         }
         if(comicList != nil){
             comicList.removeAll()
         }
-        for i in startNum ... endNum{
-            number = i
-            var url = "\(baseUrl)\(number)\(postfix)"
-            Alamofire.request(url).responseJSON{response in
-                switch response.result{
+        let queue = DispatchQueue(label:"fetchingQueue")
+        queue.async {
+            for i in startNum ... endNum{
+                number = i
+                var url = "\(baseUrl)\(number)\(postfix)"
+                Alamofire.request(url).responseJSON{response in
+                    switch response.result{
                     case .success:
                         
                         let comicData = try? JSONDecoder().decode(ComicBook.self,from: response.data!)
@@ -62,16 +67,18 @@ class Utils {
                         comicList.append(comic)
                         if(isList){
                             Globals.listItems = comicList
+                            //Globals.listItems.append(contentsOf: comicList)
                             NotificationCenter.default.post(name: Notification.Name(rawValue: Globals.tableLoadNotificationKey), object: self)
                         }else{
                             Globals.gridItems = comicList
                             NotificationCenter.default.post(name: Notification.Name(rawValue: Globals.collectionLoadNotificationKey), object: self)
                         }
                         
-                    break
+                        break
                     case .failure(let error):
-                    //failure callback
-                    print(error)
+                        //failure callback
+                        print(error)
+                    }
                 }
             }
         }
