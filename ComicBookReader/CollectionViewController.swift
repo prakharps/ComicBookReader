@@ -38,22 +38,27 @@ class CollectionViewController: UIViewController,ANCollectionViewAdPlacerDelegat
         headerView.layer.shadowOpacity = 0.2
         headerView.layer.shadowRadius = 20
         
+        //initialize loader for api calls
         initializeLoader()
         indicator.startAnimating()
         Utils.getComics(direction: 0,isList: false)
         
+        //Adding notification observer to get notified when data is availaible for collection view to load
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadCollectionView),
                                                name: NSNotification.Name(rawValue: Globals.collectionLoadNotificationKey),
                                                object: nil)
         
+        //Adding tap gesture to close full screen mode
         let closeTapGesture = UITapGestureRecognizer(target: self, action: #selector(disableFullScreen(closeTapGesture:)))
         close.addGestureRecognizer(closeTapGesture)
         
+        //Addind tap gesture to show alternate text on clicking on image
         let imageViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(hideImage(imageViewTapGesture:)))
         comicImage.isUserInteractionEnabled = true
         comicImage.addGestureRecognizer(imageViewTapGesture)
         
+        //Addind tap gesture to show image on clicking on alternate text
         let alternateTextTapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage(alternateTextTapGesture:)))
         comicAlternateText.isUserInteractionEnabled = true
         comicAlternateText.addGestureRecognizer(alternateTextTapGesture)
@@ -154,6 +159,7 @@ extension CollectionViewController:UICollectionViewDelegate,UICollectionViewData
         return cell!
     }
     
+    //Enables full screen on clicking on a cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell:CustomCollectionViewCell = self.comicCollectionView.an_dequeueReusableCell(withReuseIdentifier: collectionCellReuseIdentifier, for: indexPath) as! CustomCollectionViewCell
@@ -176,6 +182,7 @@ extension CollectionViewController:UICollectionViewDelegate,UICollectionViewData
         setNeedsStatusBarAppearanceUpdate()
     }
     
+    //Checks if collection view is ready to load more data
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height

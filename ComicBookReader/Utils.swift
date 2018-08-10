@@ -11,7 +11,7 @@ import Alamofire
 
 class Utils {
     
-    
+    //function to fetch comic from the given api
     static func getComics(direction:Int,isList:Bool) -> (){
         var baseUrl = "http://xkcd.com/"
         var number = 1

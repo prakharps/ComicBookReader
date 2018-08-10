@@ -38,30 +38,33 @@ class TableViewController: UIViewController,ANTableViewAdPlacerDelegate{
         
         fullScreenView.isHidden = true
         comicTableView.delegate = self
-        //comicTableView.setDelegate(self)
         comicTableView.dataSource = self
-        //comicTableView.setDataSource(self)
         comicTableView.rowHeight = 100
         headerView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         headerView.layer.shadowOpacity = 0.2
         headerView.layer.shadowRadius = 20
         
+        //initialize loader for api calls
         initializeLoader()
         indicator.startAnimating()
         Utils.getComics(direction: 0,isList: true)
         
+        //Adding notification observer to get notified when data is availaible for table view to load
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadTable),
                                                name: NSNotification.Name(rawValue: Globals.tableLoadNotificationKey),
                                                object: nil)
         
+        //Adding tap gesture to close full screen mode
         let closeTapGesture = UITapGestureRecognizer(target: self, action: #selector(disableFullScreen(closeTapGesture:)))
         close.addGestureRecognizer(closeTapGesture)
         
+        //Addind tap gesture to show alternate text on clicking on image
         let imageViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(hideImage(imageViewTapGesture:)))
         comicImage.isUserInteractionEnabled = true
         comicImage.addGestureRecognizer(imageViewTapGesture)
         
+        //Addind tap gesture to show image on clicking on alternate text
         let alternateTextTapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage(alternateTextTapGesture:)))
         comicAlternateText.isUserInteractionEnabled = true
         comicAlternateText.addGestureRecognizer(alternateTextTapGesture)
@@ -148,12 +151,8 @@ class TableViewController: UIViewController,ANTableViewAdPlacerDelegate{
 
 }
 
-//extension TableViewController{
 extension TableViewController:UITableViewDataSource,UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return Globals.listItems.count
-//    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Globals.listItems.count
     }
@@ -178,26 +177,7 @@ extension TableViewController:UITableViewDataSource,UITableViewDelegate{
         return cell!
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if(tableView == self.comicTableView){
-//            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
-//            let index = indexPath.row
-//            let comic = Globals.listItems[index]
-//            Alamofire.request(comic.img).responseImage{ response in
-//                guard let image = response.result.value else {
-//                    return
-//                }
-//                cell.comicImageView.image = image
-//            }
-//            cell.comicTitle.text = comic.title
-//            cell.comicAlternateText.text = comic.alt
-//            currentElement = index
-//            return cell
-//        }
-//        var cell:UITableViewCell? = nil
-//        return cell!
-//    }
-    
+    //Enables full screen on clicking on a cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 if(tableView == self.comicTableView){
                     let cell:CustomTableViewCell = self.comicTableView.an_dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
@@ -221,30 +201,7 @@ extension TableViewController:UITableViewDataSource,UITableViewDelegate{
                 }
             }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if(tableView == self.comicTableView){
-//            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
-//            var index = indexPath.row
-//            let comic = Globals.listItems[index]
-//            comicImage.image = cell.comicImageView.image
-//            Alamofire.request(comic.img).responseImage{ response in
-//                guard let image = response.result.value else {
-//                    return
-//                }
-//                self.comicImage.image = image
-//            }
-//            comicTitle.text = comic.title
-//            let date = "\(comic.day!)/\(comic.month!)/\(comic.year!)"
-//            comicDate.text = date
-//            comicAlternateText.text = comic.alt
-//            fullScreenView.isHidden = false
-//            self.tabBarController?.tabBar.isHidden = true
-//            statusBarHidden = true
-//            setNeedsStatusBarAppearanceUpdate()
-//        }
-//    }
-    
-    
+    //Checks if table view is ready to load more data
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
