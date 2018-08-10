@@ -9,8 +9,9 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import AdsNativeSDK
 
-class TableViewController: UIViewController{
+class TableViewController: UIViewController,ANTableViewAdPlacerDelegate{
     
     @IBOutlet weak var fullScreenView: UIView!
     @IBOutlet weak var comicTableView: UITableView!
@@ -22,7 +23,11 @@ class TableViewController: UIViewController{
     @IBOutlet weak var comicDate: UILabel!
     @IBOutlet weak var close: UIView!
     
+    var positions:ANClientAdPositions! = ANClientAdPositions()
+    var targeting:ANAdRequestTargeting! = ANAdRequestTargeting()
+    var placer:ANTableViewAdPlacer! = ANTableViewAdPlacer()
     let tableCellReuseIdentifier = "tableViewCell"
+    let tableCellReuseIdentifier_ad = "nativeAdTable"
     var statusBarHidden = false
     var indicator: UIActivityIndicatorView!
     var currentElement = 0
@@ -30,9 +35,12 @@ class TableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fullScreenView.isHidden = true
         comicTableView.delegate = self
+        //comicTableView.setDelegate(self)
         comicTableView.dataSource = self
+        //comicTableView.setDataSource(self)
         comicTableView.rowHeight = 100
         headerView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         headerView.layer.shadowOpacity = 0.2
@@ -57,6 +65,22 @@ class TableViewController: UIViewController{
         let alternateTextTapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage(alternateTextTapGesture:)))
         comicAlternateText.isUserInteractionEnabled = true
         comicAlternateText.addGestureRecognizer(alternateTextTapGesture)
+        
+        
+        //Ads Native Code
+        positions.addFixedIndexPath(IndexPath(item: 1, section: 0))
+        positions.enableRepeatingPositions(withInterval: 5)
+        
+        
+        
+        var keywords = NSMutableArray()
+        keywords.add("social")
+        keywords.add("music")
+        targeting.keywords = keywords as! [Any]
+        
+        self.placer = ANTableViewAdPlacer.init(tableView: comicTableView, viewController: self, adPositions: positions, defaultAdRenderingClass: SampleAdView.self)
+        self.placer.delegate = self
+        self.placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aB09x8rWKvsJ-HI")
         // Do any additional setup after loading the view.
     }
     
@@ -84,7 +108,7 @@ class TableViewController: UIViewController{
         if(Globals.listItems.count == 10){
             comicTableView.reloadData()
             indicator.stopAnimating()
-            comicTableView.isHidden = false
+            comicTableView.isUserInteractionEnabled = true
             Globals.isFetchingList = false
         }
     }
@@ -124,14 +148,19 @@ class TableViewController: UIViewController{
 
 }
 
-extension TableViewController:UITableViewDelegate,UITableViewDataSource{
+//extension TableViewController{
+extension TableViewController:UITableViewDataSource,UITableViewDelegate{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return Globals.listItems.count
+//    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Globals.listItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == self.comicTableView){
-            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
+            let cell:CustomTableViewCell = self.comicTableView.an_dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
             let index = indexPath.row
             let comic = Globals.listItems[index]
             Alamofire.request(comic.img).responseImage{ response in
@@ -149,28 +178,71 @@ extension TableViewController:UITableViewDelegate,UITableViewDataSource{
         return cell!
     }
     
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if(tableView == self.comicTableView){
+//            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
+//            let index = indexPath.row
+//            let comic = Globals.listItems[index]
+//            Alamofire.request(comic.img).responseImage{ response in
+//                guard let image = response.result.value else {
+//                    return
+//                }
+//                cell.comicImageView.image = image
+//            }
+//            cell.comicTitle.text = comic.title
+//            cell.comicAlternateText.text = comic.alt
+//            currentElement = index
+//            return cell
+//        }
+//        var cell:UITableViewCell? = nil
+//        return cell!
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(tableView == self.comicTableView){
-            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
-            var index = indexPath.row
-            let comic = Globals.listItems[index]
-            comicImage.image = cell.comicImageView.image
-            Alamofire.request(comic.img).responseImage{ response in
-                guard let image = response.result.value else {
-                    return
+                if(tableView == self.comicTableView){
+                    let cell:CustomTableViewCell = self.comicTableView.an_dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
+                    var index = indexPath.row
+                    let comic = Globals.listItems[index]
+                    comicImage.image = cell.comicImageView.image
+                    Alamofire.request(comic.img).responseImage{ response in
+                        guard let image = response.result.value else {
+                            return
+                        }
+                        self.comicImage.image = image
+                    }
+                    comicTitle.text = comic.title
+                    let date = "\(comic.day!)/\(comic.month!)/\(comic.year!)"
+                    comicDate.text = date
+                    comicAlternateText.text = comic.alt
+                    fullScreenView.isHidden = false
+                    self.tabBarController?.tabBar.isHidden = true
+                    statusBarHidden = true
+                    setNeedsStatusBarAppearanceUpdate()
                 }
-                self.comicImage.image = image
             }
-            comicTitle.text = comic.title
-            let date = "\(comic.day!)/\(comic.month!)/\(comic.year!)"
-            comicDate.text = date
-            comicAlternateText.text = comic.alt
-            fullScreenView.isHidden = false
-            self.tabBarController?.tabBar.isHidden = true
-            statusBarHidden = true
-            setNeedsStatusBarAppearanceUpdate()
-        }
-    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if(tableView == self.comicTableView){
+//            let cell:CustomTableViewCell = self.comicTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath) as! CustomTableViewCell
+//            var index = indexPath.row
+//            let comic = Globals.listItems[index]
+//            comicImage.image = cell.comicImageView.image
+//            Alamofire.request(comic.img).responseImage{ response in
+//                guard let image = response.result.value else {
+//                    return
+//                }
+//                self.comicImage.image = image
+//            }
+//            comicTitle.text = comic.title
+//            let date = "\(comic.day!)/\(comic.month!)/\(comic.year!)"
+//            comicDate.text = date
+//            comicAlternateText.text = comic.alt
+//            fullScreenView.isHidden = false
+//            self.tabBarController?.tabBar.isHidden = true
+//            statusBarHidden = true
+//            setNeedsStatusBarAppearanceUpdate()
+//        }
+//    }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -185,6 +257,7 @@ extension TableViewController:UITableViewDelegate,UITableViewDataSource{
         if(offsetY > difference){
             if(!Globals.isFetchingList){
                 Globals.isFetchingList = true
+                comicTableView.isUserInteractionEnabled = false
                 let index = IndexPath(item: 1, section: 0)
                 comicTableView.scrollToRow(at: index, at: .top, animated: false)
                 comicTableView.scrollRectToVisible(CGRect(x:0.0, y:0.0, width:1.0, height:1.0), animated: false)
@@ -194,6 +267,7 @@ extension TableViewController:UITableViewDelegate,UITableViewDataSource{
         }else if((offsetY + 50) < 0 && Globals.listStartNumber > 10){
             if(!Globals.isFetchingList){
                 Globals.isFetchingList = true
+                comicTableView.isUserInteractionEnabled = false
                 let index = IndexPath(item: 1, section: 0)
                 comicTableView.scrollToRow(at: index, at: .top, animated: false)
                 comicTableView.scrollRectToVisible(CGRect(x:0.0, y:0.0, width:1.0, height:1.0), animated: false)

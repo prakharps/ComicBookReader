@@ -61,7 +61,7 @@ class CollectionViewController: UIViewController {
         if(Globals.gridItems.count == 10){
             comicCollectionView.reloadData()
             indicator.stopAnimating()
-            comicCollectionView.isHidden = false
+            comicCollectionView.isUserInteractionEnabled = true
             Globals.isFetchingGrid = false
         }
     }
@@ -171,6 +171,7 @@ extension CollectionViewController:UICollectionViewDelegate,UICollectionViewData
             if(!Globals.isFetchingGrid){
                 Globals.isFetchingGrid = true
                 let index = IndexPath(item: 1, section: 0)
+                comicCollectionView.isUserInteractionEnabled = false
                 comicCollectionView.scrollToItem(at: index, at: .top, animated: false)
                 comicCollectionView.scrollRectToVisible(CGRect(x:0.0, y:0.0, width:1.0, height:1.0), animated: false)
                 self.indicator.startAnimating()
@@ -180,6 +181,7 @@ extension CollectionViewController:UICollectionViewDelegate,UICollectionViewData
             if(!Globals.isFetchingGrid){
                 Globals.isFetchingGrid = true
                 let index = IndexPath(item: 1, section: 0)
+                comicCollectionView.isUserInteractionEnabled = false
                 comicCollectionView.scrollToItem(at: index, at: .top, animated: false)
                 comicCollectionView.scrollRectToVisible(CGRect(x:0.0, y:0.0, width:1.0, height:1.0), animated: false)
                 self.indicator.startAnimating()
