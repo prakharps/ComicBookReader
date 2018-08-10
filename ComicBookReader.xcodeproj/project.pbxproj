@@ -15,6 +15,8 @@
 		1C0B242F211AEEED000C0361 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0B242E211AEEED000C0361 /* CollectionViewController.swift */; };
 		1C0B2431211AEF1F000C0361 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0B2430211AEF1F000C0361 /* CustomCollectionViewCell.swift */; };
 		1C0B2433211AEF51000C0361 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0B2432211AEF51000C0361 /* CustomTableViewCell.swift */; };
+		1C1BE171211DD4970018044B /* CollectionViewAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1BE16F211DD4970018044B /* CollectionViewAdCell.m */; };
+		1C1BE172211DD4970018044B /* CollectionViewAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C1BE170211DD4970018044B /* CollectionViewAdCell.xib */; };
 		1C1D14D42119BD5C009E565D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D14D32119BD5C009E565D /* AppDelegate.swift */; };
 		1C1D14DB2119BD5C009E565D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D14D92119BD5C009E565D /* Main.storyboard */; };
 		1C1D14E02119BD5D009E565D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D14DE2119BD5D009E565D /* LaunchScreen.storyboard */; };
@@ -63,6 +65,9 @@
 		1C0B242E211AEEED000C0361 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		1C0B2430211AEF1F000C0361 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C0B2432211AEF51000C0361 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		1C1BE16E211DD4970018044B /* CollectionViewAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewAdCell.h; sourceTree = "<group>"; };
+		1C1BE16F211DD4970018044B /* CollectionViewAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewAdCell.m; sourceTree = "<group>"; };
+		1C1BE170211DD4970018044B /* CollectionViewAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewAdCell.xib; sourceTree = "<group>"; };
 		1C1D14D02119BD5C009E565D /* ComicBookReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComicBookReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C1D14D32119BD5C009E565D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C1D14DA2119BD5C009E565D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +171,9 @@
 				1C1D14E12119BD5D009E565D /* Info.plist */,
 				1C0B241D2119F187000C0361 /* TableViewController.swift */,
 				1C98F19A211D8A9B008FA83C /* SampleAdView.h */,
+				1C1BE16E211DD4970018044B /* CollectionViewAdCell.h */,
+				1C1BE16F211DD4970018044B /* CollectionViewAdCell.m */,
+				1C1BE170211DD4970018044B /* CollectionViewAdCell.xib */,
 				1C98F19B211D8A9B008FA83C /* SampleAdView.m */,
 				1C98F19D211D8EF3008FA83C /* SampleAddView.xib */,
 				1C0B242E211AEEED000C0361 /* CollectionViewController.swift */,
@@ -338,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1D15072119BDB0009E565D /* Fonts in Resources */,
+				1C1BE172211DD4970018044B /* CollectionViewAdCell.xib in Resources */,
 				1C1D14E02119BD5D009E565D /* LaunchScreen.storyboard in Resources */,
 				1C0B24162119DA43000C0361 /* Assets.xcassets in Resources */,
 				1C1D14DB2119BD5C009E565D /* Main.storyboard in Resources */,
@@ -450,6 +459,7 @@
 				1C0B241E2119F187000C0361 /* TableViewController.swift in Sources */,
 				1C0B242F211AEEED000C0361 /* CollectionViewController.swift in Sources */,
 				1C0B2424211ADF8F000C0361 /* Globals.swift in Sources */,
+				1C1BE171211DD4970018044B /* CollectionViewAdCell.m in Sources */,
 				1C98F19C211D8A9B008FA83C /* SampleAdView.m in Sources */,
 				1C0B2422211ADE97000C0361 /* Utils.swift in Sources */,
 			);

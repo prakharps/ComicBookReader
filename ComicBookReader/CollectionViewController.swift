@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class CollectionViewController: UIViewController {
+class CollectionViewController: UIViewController,ANCollectionViewAdPlacerDelegate {
 
     @IBOutlet weak var fullScreenView: UIView!
     @IBOutlet weak var headerView: UIView!
@@ -22,6 +22,9 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var comicDate: UILabel!
     @IBOutlet weak var close: UIView!
     
+    var positions:ANClientAdPositions! = ANClientAdPositions()
+    var targeting:ANAdRequestTargeting! = ANAdRequestTargeting()
+    var placer:ANCollectionViewAdPlacer! = ANCollectionViewAdPlacer()
     let collectionCellReuseIdentifier = "collectionViewCell"
     var statusBarHidden = false
     var indicator: UIActivityIndicatorView!
@@ -54,6 +57,21 @@ class CollectionViewController: UIViewController {
         let alternateTextTapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage(alternateTextTapGesture:)))
         comicAlternateText.isUserInteractionEnabled = true
         comicAlternateText.addGestureRecognizer(alternateTextTapGesture)
+        
+        //Ads Native Code
+        positions.addFixedIndexPath(IndexPath(item: 2, section: 0))
+        positions.enableRepeatingPositions(withInterval: 5)
+        
+        
+        
+        var keywords = NSMutableArray()
+        keywords.add("social")
+        keywords.add("music")
+        targeting.keywords = keywords as! [Any]
+        
+        self.placer = ANCollectionViewAdPlacer.init(collectionView: comicCollectionView, viewController: self, adPositions: positions, defaultAdRenderingClass: CollectionViewAdCell.self)
+        self.placer.delegate = self
+        self.placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aB09x8rWKvsJ-HI")
         // Do any additional setup after loading the view.
     }
     
@@ -120,7 +138,7 @@ extension CollectionViewController:UICollectionViewDelegate,UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if(collectionView == self.comicCollectionView){
-            let cell:CustomCollectionViewCell = self.comicCollectionView.dequeueReusableCell(withReuseIdentifier: collectionCellReuseIdentifier, for: indexPath) as! CustomCollectionViewCell
+            let cell:CustomCollectionViewCell = self.comicCollectionView.an_dequeueReusableCell(withReuseIdentifier: collectionCellReuseIdentifier, for: indexPath) as! CustomCollectionViewCell
             var index = indexPath.item
             var comic = Globals.gridItems[index]
             Alamofire.request(comic.img).responseImage{ response in
@@ -138,7 +156,7 @@ extension CollectionViewController:UICollectionViewDelegate,UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell:CustomCollectionViewCell = self.comicCollectionView.dequeueReusableCell(withReuseIdentifier: collectionCellReuseIdentifier, for: indexPath) as! CustomCollectionViewCell
+        let cell:CustomCollectionViewCell = self.comicCollectionView.an_dequeueReusableCell(withReuseIdentifier: collectionCellReuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         var index = indexPath.row
         let comic = Globals.gridItems[index]
         comicImage.image = cell.comicImageView.image

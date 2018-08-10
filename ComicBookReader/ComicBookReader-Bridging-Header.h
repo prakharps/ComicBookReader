@@ -7,5 +7,6 @@
 
 #import <AdsNativeSDK/AdsNativeSDK.h>
 #import "SampleAdView.h"
+#import "CollectionViewAdCell.h"
 
 #endif
